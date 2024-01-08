@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="./resources/images/icons/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="./resources/styles/common.css">
+    <link rel="stylesheet" href="./resources/styles/layout.css">
+    <link rel="stylesheet" href="./resources/styles/style.css">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b9cdef4e50d74b41b2be19a98ae19255"></script>
+    <script type="text/javascript" src="./resources/scripts/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./resources/scripts/scripts.js"></script>
+</head>
+<body>
+    <div id="modal">
+        <form action="" method="get">
+            <div class="modal-wrap checkbox confirm" data-modalid="view">
+                <div class="modal-body">
+                    <h2>레이어 선택</h2>
+                    <ul>
+                        <li><input type="checkbox" id="checkbox1" name="showlist" value="show1"><label for="checkbox1">병원</label></li>
+                        <li><input type="checkbox" id="checkbox2" name="showlist" value="show2"><label for="checkbox2">보건소</label></li>
+                        <li><input type="checkbox" id="checkbox3" name="showlist" value="show3"><label for="checkbox3">약국</label></li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <a href="">취소</a>
+                    <button type="submit" id="layer_click">확인</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <header>
+        <div>
+            <a href="" class="img40x40"></a>
+            <p class="title">관리 지도</p>
+            <a href="" class="img40x40"></a>
+        </div>
+    </header>
+    <section>
+        <div id="icon-area">
+            <a href=""></a>
+            <a data-modal="view"></a>
+        </div>
+        <div id="map"></div>
+        <div id="item-area">
+            <div class="item" id="user1">
+                <div>
+                    <div class="photo"></div>
+                    <div>
+                        <p class="title">홍길동 할머니</p>
+                        <p class="dscpt">서울특별시 강남구 영동대로 513</p>
+                        <p class="dscpt type2">2003년 02월 08일생 만 19세</p>
+                    </div>
+                </div>
+                <ul>
+                    <li><a href="" class="phone">전화 걸기</a></li>
+                    <li><a href="" class="checklist">건강 정보</a></li>
+                    <li><a href="" class="address">주소 복사</a></li>
+                </ul>
+            </div>
+            <div class="item" id="user2">
+                <div>
+                    <div class="photo"></div>
+                    <div>
+                        <p class="title">홍길동 할머니</p>
+                        <p class="dscpt">서울특별시 강남구 영동대로 513</p>
+                        <p class="dscpt type2">2003년 02월 08일생 만 19세</p>
+                    </div>
+                </div>
+                <ul>
+                    <li><a href="" class="phone">전화 걸기</a></li>
+                    <li><a href="" class="checklist">건강 정보</a></li>
+                    <li><a href="" class="address">주소 복사</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <ul>
+            <li>
+                <a href="./alert.html">
+                    <img src="/resources/images/icons/img40x40/footer/ic-info.svg" alt="" class="img40x40">
+                    <span>알림</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="./map.html">
+                    <img src="/resources/images/icons/img40x40/footer/ic-map.svg" alt="" class="img40x40">
+                    <span>지도</span>
+                </a>
+            </li>
+            <li>
+                <a href="./myPage.html">
+                    <img src="/resources/images/icons/img40x40/footer/ic-myPage.svg" alt="" class="img40x40">
+                    <span>마이페이지</span>
+                </a>
+            </li>
+        </ul>
+    </footer>
+    <script>
+        const checkbox1 = document.getElementById('checkbox1');
+        const checkbox2 = document.getElementById('checkbox2');
+        const checkbox3 = document.getElementById('checkbox3');
+
+        var check1 = false;
+        var check2 = false;
+        var check3 = false;
+        document.getElementById('layer_click').addEventListener('click', function() {
+            console.log(checkbox1.getAttribute("checked"));
+            console.log(checkbox2.getAttribute("checked"));
+            console.log(checkbox3.getAttribute("checked"));
+        });
+
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+            mapOption = { 
+                center: new kakao.maps.LatLng(37.587167, 127.027337), // 지도의 중심좌표
+                level: 3 // 지도의 확대 레벨
+            };
+
+        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+        
+        // 마커를 표시할 위치와 title 객체 배열입니다 
+        // 병원 4 약국 6 보건소 1 회원 3
+        var positions0 = [
+            {
+                title: '종로구 보건소', 
+                latlng: new kakao.maps.LatLng( 37.5735827, 127.014484)
+            },
+            {
+                title: '고려대학교 안암 병원', 
+                latlng: new kakao.maps.LatLng(37.587167, 127.027337)
+            },
+            {
+                title: '우신향병원', 
+                latlng: new kakao.maps.LatLng(37.584792, 127.031123)
+            },
+            {
+                title: '크림슨 내과의원',
+                latlng: new kakao.maps.LatLng(37.587036, 127.029120)
+            },
+            {
+                title: '고려 한의원',
+                latlng: new kakao.maps.LatLng(37.586706, 127.033411)
+            },
+            {
+                title: '운용약국',
+                latlng: new kakao.maps.LatLng(37.591435, 127.037676)
+            },
+            {
+                title: '소원약국',
+                latlng: new kakao.maps.LatLng(37.586518, 127.029468)
+            },
+            {
+                title: '대학약국',
+                latlng: new kakao.maps.LatLng(37.586443, 127.029179)
+            },
+            {
+                title: '정문약국',
+                latlng: new kakao.maps.LatLng(37.586106, 127.028307)
+            },
+            {
+                title: '백두산약국',
+                latlng: new kakao.maps.LatLng(37.586128, 127.028033)
+            },
+            {
+                title: '미래약국',
+                latlng: new kakao.maps.LatLng(37.586482, 127.028910)
+            },
+            {
+                title: '창현빌라',
+                latlng: new kakao.maps.LatLng(37.587143, 127.024093)
+            },
+            {
+                title: '에스엠빌라',
+                latlng: new kakao.maps.LatLng(37.586845, 127.024254)
+            },
+            {
+                title: '원플러스 오피스텔',
+                latlng: new kakao.maps.LatLng(37.586204, 127.024373)
+            }
+        ];
+
+        var positions1 = [
+            {
+                title: '고려대학교 안암 병원', 
+                latlng: new kakao.maps.LatLng(37.587167, 127.027337)
+            },
+            {
+                title: '우신향병원', 
+                latlng: new kakao.maps.LatLng(37.584792, 127.031123)
+            },
+            {
+                title: '크림슨 내과의원',
+                latlng: new kakao.maps.LatLng(37.587036, 127.029120)
+            },
+            {
+                title: '고려 한의원',
+                latlng: new kakao.maps.LatLng(37.586706, 127.033411)
+            }
+        ];
+
+        var positions2 = [
+            {
+                title: '종로구 보건소', 
+                latlng: new kakao.maps.LatLng( 37.5735827, 127.014484)
+            }
+        ];
+        
+
+        var positions3 = [
+        
+            {
+                title: '운용약국',
+                latlng: new kakao.maps.LatLng(37.591435, 127.037676)
+            },
+            {
+                title: '소원약국',
+                latlng: new kakao.maps.LatLng(37.586518, 127.029468)
+            },
+            {
+                title: '대학약국',
+                latlng: new kakao.maps.LatLng(37.586443, 127.029179)
+            },
+            {
+                title: '정문약국',
+                latlng: new kakao.maps.LatLng(37.586106, 127.028307)
+            },
+            {
+                title: '백두산약국',
+                latlng: new kakao.maps.LatLng(37.586128, 127.028033)
+            },
+            {
+                title: '미래약국',
+                latlng: new kakao.maps.LatLng(37.586482, 127.028910)
+            },
+            {
+                title: '창현빌라',
+                latlng: new kakao.maps.LatLng(37.587143, 127.024093)
+            },
+            {
+                title: '에스엠빌라',
+                latlng: new kakao.maps.LatLng(37.586845, 127.024254)
+            },
+            {
+                title: '원플러스 오피스텔',
+                latlng: new kakao.maps.LatLng(37.586204, 127.024373)
+            }
+        ];
+        
+        var positions4 = [
+            {
+                title: '창현빌라',
+                latlng: new kakao.maps.LatLng(37.587143, 127.024093)
+            },
+            {
+                title: '에스엠빌라',
+                latlng: new kakao.maps.LatLng(37.586845, 127.024254)
+            },
+            {
+                title: '원플러스 오피스텔',
+                latlng: new kakao.maps.LatLng(37.586204, 127.024373)
+            }
+        ];
+
+        var filterValue = 0;
+        switch(filterValue) {
+            case 0 :
+                filterPosition = positions0 
+                break;
+            case 1 :
+                filterPosition = positions1
+                break;
+            case 2 :
+                filterPosition = positions2
+                break;
+            case 3 : 
+             filterPosition = positions3
+                break;
+            case 4 : 
+                filterPosition = positions4
+                break;
+        }
+
+        // concat 처리 
+
+        $('#user1').hide()
+        $('#user2').hide()
+
+        // 마커 이미지의 이미지 주소입니다
+        var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+        
+        for (var i = 0; i < filterPosition.length; i ++) {
+            
+            // 마커 이미지의 이미지 크기 입니다
+            var imageSize = new kakao.maps.Size(24, 35); 
+            
+            // 마커 이미지를 생성합니다    
+            var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+
+            console.log(filterPosition[i].latlng)
+            console.log(filterPosition[i].title)
+            
+            // 마커를 생성합니다
+            var marker = new kakao.maps.Marker({
+                map: map, // 마커를 표시할 지도
+                position: filterPosition[i].latlng, // 마커를 표시할 위치
+                title : filterPosition[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                image : markerImage // 마커 이미지 
+            });
+
+            marker.id = filterPosition[i].title
+
+        
+            // 마커에 클릭이벤트를 등록합니다
+            kakao.maps.event.addListener(marker, 'click', function() {
+                // 마커 위에 인포윈도우를 표시합니다
+                
+                console.log(this.id)
+                switch(this.id) {
+                    case "종로구 보건소" :
+                        onChangeContent("종로구 보건소", "", "서울특별시 종로구 자하문로19길 36", "", "", "", false, false, 1)
+                        break;
+                    case "고려대학교 안암 병원" :
+                        onChangeContent("고려대학교 안암 병원", "", "서울특별시 성북구 고려대로 73 (안암동5가)", "", "", "", false, false, 1)
+                        break;
+                    case "우신향병원" :
+                        onChangeContent("우신향병원", "", "서울특별시 성북구 안암로 99", "", "", "", false, false, 1)
+                        break;
+                    case "크림슨 내과의원" :
+                        onChangeContent("크림슨 내과의원", "", "서울특별시 성북구 개운사2길 19", "", "", "", false, false, 1)
+                        break;
+                    case "고려 한의원" :
+                        onChangeContent("고려 한의원", "", "서울특별시 동대문구 제기동 146-10", "", "", "", false, false, 1)
+                        break;
+                    case "운용약국" :
+                        onChangeContent("운용약국", "", "서울특별시 성북구 종암동 28-24", "", "", "", false, false, 1)
+                        break;
+                    case "소원약국" :
+                        onChangeContent("소원약국", "", "서울특별시 성북구 개운사길 2", "", "", "", false, false, 1)
+                        break;
+                    case "대학약국" :
+                        onChangeContent("대학약국", "", "서울특별시 성북구 안암동5가 101-53", "", "", "", false, false, 1)
+                        break;
+                    case "정문약국" :
+                        onChangeContent("정문약국", "", "서울특별시 성북구 안암동5가 146-10", "", "", "", false, false, 1)
+                        break;
+                    case "백두산약국" :
+                        onChangeContent("백두산약국", "", "서울특별시 성북구 안암동5가 146-56", "", "", "", false, false, 1)
+                        break;
+                    case "미래약국" :
+                        onChangeContent("미래약국", "", "서울특별시 성북구 안암동5가 101-72", "", "", "", false, false, 1)
+                        break;
+            // function onChangeContent(title, birthday, address, title2, birthday2, address2, isShowBirthday, isShowHealth, isShowDscpt, showContentNum) {
+
+                    case "창현빌라" :
+                        onChangeContent("가나다", "2002년 04월 11일생 만 20세", "서울특별시 강남구 논현동 189", "라마바", "2000년 04월 11일생 만 22세", "서울특별시 강남구 논현동 189", true, true, 2)
+                        break;
+                    case "에스엠빌라" :
+                        onChangeContent("사아자", "2002년 04월 11일생 만 20세", "서울 성북구 고려대로7가길 32", "차카타", "2000년 04월 11일생 만 22세", "서울 성북구 고려대로7가길 32", true, true, 2)
+                        break;
+                    case "원플러스 오피스텔" :
+                       onChangeContent("파하가", "2002년 04월 11일생 만 20세", "서울 성북구 고려대로 48", "나다라", "2000년 04월 11일생 만 22세", "서울 성북구 고려대로 48", true, true, 2)
+                        break;
+                }
+            });
+
+            // 제목 주소 
+            function onChangeContent(title, birthday, address, title2, birthday2, address2, isShowBirthday, isShowHealth, showContentNum) {
+                // 컨텐츠 표시 개수 
+                console.log(title + "ㅁㄴㅇ")
+                if(showContentNum == 1) {
+                    showOneDisplay()
+
+                    $('#user1 .title').text(title)
+                    $('#user1 .dscpt').text(address)
+                    $('#user1 .dscpt.type2').text(birthday)
+                    
+                    if(isShowBirthday) {
+                        $('#user1 .dscpt.type2').show()
+                    } else {
+                        $('#user1 .dscpt.type2').hide()
+                    }
+
+                    if(isShowHealth) {
+                        $('#user1 .checklist').show()
+                    } else {
+                        $('#user1 .checklist').hide()
+                    }
+                } else {
+                    showAllDisplay()
+
+                    $('#user1 .title').text(title)
+                    $('#user1 .dscpt').text(address)
+                    $('#user1 .dscpt.type2').text(birthday2)
+
+                    $('#user2 .title').text(title2)
+                    $('#user2.dscpt').text(address2)
+                    $('#user2 .dscpt.type2').text(birthday2)
+
+                    if(isShowBirthday) {
+                        $('#user1 .dscpt.type2').show()
+                        $('#user2 .dscpt.type2').show()
+                    } else {
+                        $('#user1 .dscpt.type2').hide()
+                        $('#user2 .dscpt.type2').hide()
+                    }
+
+                    if(isShowHealth) {
+                        $('#user1 .checklist').show()
+                        $('#user2 .checklist').show()
+                    } else {
+                        $('#user1 .checklist').hide()
+                        $('#user2 .checklist').hide()
+                    }
+                }
+            }
+
+            function showAllDisplay() {
+                $('#user1').show()
+                $('#user2').show()
+            }
+            function showOneDisplay() {
+                $('#user1').show()
+                $('#user2').hide()
+            }
+        }
+
+        marker.setMap(map)
+    </script>
+</body>
+</html>

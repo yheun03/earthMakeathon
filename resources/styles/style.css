@@ -1,0 +1,56 @@
+/* NOTE: 지도 영역 S */
+    #map{width: 100%; height: 100vh; background-color: #AFAFAF; z-index: 1;}
+    #map::before{content: "error"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font: 900 20px/1 'Pretendard'; color: #111111;}
+/* NOTE: 지도 영역 E */
+
+header.type2{position: relative; padding: 50px 40px 80px; border-bottom: none;}
+header.type2 > div{display: block; padding: 0; height: unset;}
+header.type2 .title{font: 700 20px/29px 'Pretendard';}
+header.type2 .dscpt{font: 500 14px/20px 'Pretendard'; margin-top: 10px;}
+
+header.type2 + section{padding: 0;}
+header.type2 + section > #wrap{padding: 0 40px;}
+
+header.type2 ~ footer{padding: 10px; background-color: #F2F2F2;}
+header.type2 ~ footer > div{width: 100%; position: absolute; left: 0; bottom: 72px; background-color: #F2F2F2; border-radius: 20px 20px 0 0;}
+header.type2 ~ footer > div ul{display: block;}
+header.type2 ~ footer > div li{width: 100%; display: flex; height: 50px; align-items: center; padding: 0 30px;}
+header.type2 ~ footer > div li a{display: inline-block; color: #828382; font-weight: 500;}
+header.type2 ~ footer > div li:first-child{border-bottom: 3px solid #ffffff;}
+header.type2 ~ footer > div li:first-child a{color: #0E0F0E; font-weight: 700;}
+
+#profile-area{width: 100%; padding: 14px; display: flex; align-items: center; gap: 24px;}
+#profile-area .profile span{display: block; position: absolute; top: 10px; right: 10px; width: 24px; height: 24px; color: white; text-align: center; font: 500 12px/24px 'Pretendard'; background-color: red; border-radius: 50%;}
+#profile-area > div{flex: 1; position: relative;}
+#profile-area > div:last-child{height: 155px; display: flex; flex-direction: column; justify-content: space-between;}
+#profile-area .profile{width: 100%; height: 165px; border-radius: 5px; border: 1px solid #F2F2F2; background-position: center; background-size: cover;}
+#profile-area .title{width: fit-content; font: 700 20px/29px 'Pretendard'; padding-right: 25px; background: right 0 center/20px no-repeat;}
+#profile-area .title.male{background-image: url(/resources/images/icons/img20x20/ic_male.svg);}
+#profile-area .title.female{background-image: url(/resources/images/icons/img20x20/ic_female.svg);}
+#profile-area li{font: 500 14px/20px 'Pretendard'; color: #828382;}
+#profile-area li + li{margin-top: 4px;}
+
+#selfcheck-area{width: 100%; padding: 20px 10px; background-color: #F2F2F2; display: flex; gap: 10px;}
+#selfcheck-area a{flex: 1; border-radius: 5px; background-color: #ffffff; display: flex; flex-direction: column; align-items: center; padding: 10px 0;}
+#selfcheck-area span{font: 700 12px/17px 'Pretendard'; color: #0E0F0E;}
+#selfcheck-area div{width: 70px; height: 70px; background: #51B27433 url(/resources/images/icons/img40x40/ic-selfCheck.svg) center/40px no-repeat; border-radius: 50%; margin-top: 8px;}
+#selfcheck-area a:last-child div{background-image: url(/resources/images/icons/img40x40/ic-checkList.svg);}
+
+#icon-area{position: fixed; top: 60px; right: 10px; display: flex; flex-direction: column; gap: 10px; z-index: 10;}
+#icon-area a{display: block; width: 40px; height: 40px; border-radius: 50%; background: white center/40px no-repeat; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);}
+#icon-area a:first-child{background-image: url(/resources/images/icons/img40x40/ic-this.svg);}
+#icon-area a:last-child{background-image: url(/resources/images/icons/img40x40/ic-layer.svg);}
+
+#item-area{position: fixed; width: calc(100vw - 20px); left: 50%; bottom: 63px; transform: translateX(-50%); border-radius: 5px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); z-index: 10; display: flex; flex-direction: column; gap: 10px;}
+#item-area .item{padding: 10px; background-color: white; border-radius: 5px;}
+#item-area .item > div{display: flex; align-items: center; gap: 10px; padding: 10px;}
+#item-area .item .photo{width: 85px; height: 85px; border-radius: 5px;}
+#item-area .item .title{font: 700 16px/23px 'Pretendard';}
+#item-area .item .title + .dscpt{margin: 10px 0 5px;}
+#item-area .item .dscpt{font: 500 12px/17px 'Pretendard';}
+#item-area .item > ul{display: flex; align-items: center; gap: 10px; border-top: 1px solid #BABABA; padding-top: 10px;}
+#item-area .item li a{display: block; font: 500 12px/17px 'Pretendard'; color: #828382; padding: 9px 10px 9px 36px; border: 1px solid #BABABA; border-radius: 35px; position: relative;}
+#item-area .item li a::before{content: ""; position: absolute; top: 50%; left: 5px; width: 27px; height: 27px; border-radius: 50%; background: #f2f2f2 center/18px no-repeat; transform: translateY(-50%);}
+#item-area .item li a.phone::before{background-image: url(/resources/images/icons/ic-phone.svg);}
+#item-area .item li a.checklist::before{background-image: url(/resources/images/icons/ic-hospital.svg);}
+#item-area .item li a.address::before{background-image: url(/resources/images/icons/ic-document.svg);}

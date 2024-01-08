@@ -1,0 +1,26 @@
+/* NOTE: 해더 영역 S */
+    header{position: fixed; top: 0; width: 100%; background-color: #ffffff; z-index: 10; border-bottom: 1px solid #BABABA;}
+    header > div{width: min(1440px, 100%); height: 50px; padding: 5px 10px; margin: auto; display: flex; align-items: center; justify-content: space-between;}
+    header .ic-back{background: url(/resources/images/icons/img40x40/ic-back.svg);}
+    header .title{font: 500 16px/23px 'Pretendard';}
+    /* NOTE: GNB S */
+        #gnb ul{display: flex}
+        #gnb li + li{margin-left: 20px;}
+    /* NOTE: GNB E */
+/* NOTE: 해더 영역 E */
+
+
+/* NOTE: 섹션 영역 S */
+    section{width: 100%; height: 100%; position: relative; padding: 50px 0 53px; box-sizing: border-box;}
+    #wrap{width: 100%; height: 100%; overflow-y: auto;}
+/* NOTE: 섹션 영역 E */
+
+
+/* NOTE: 푸터 영역 S */
+    footer{position: fixed; bottom: 0; width: 100%; background-color: white; z-index: 10}
+    footer ul{display: flex; align-items: center;}
+    footer li{flex: 1; opacity: .2;}
+    footer li.active{opacity: 1;}
+    footer a{display: flex; flex-direction: column; align-items: center; font: 700 10px/14px 'Pretendard'; color: #0e0f0e;}
+    footer span{margin: -4px 0 3px}
+/* NOTE: 푸터 영역 E */

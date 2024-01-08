@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="./resources/images/icons/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="./resources/styles/common.css">
+    <link rel="stylesheet" href="./resources/styles/layout.css">
+    <link rel="stylesheet" href="./resources/styles/style.css">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b9cdef4e50d74b41b2be19a98ae19255"></script>
+    <script type="text/javascript" src="./resources/scripts/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./resources/scripts/scripts.js"></script>
+</head>
+<body>
+    <header class="type2">
+        <div>
+            <p class="title">회원가입</p>
+            <p class="dscpt">회원가입을 위해 정보를 입력해주세요.</p>
+        </div>
+    </header>
+    <section>
+        <div id="wrap">
+            <label class="label">
+                <span>이름</span>
+                <input type="text" class="ipt" placeholder="이름을 입력해주세요.">
+            </label>
+            <label class="label">
+                <span>주민번호 앞 7자리</span>
+                <input type="text" class="ipt" placeholder="000000-0">
+            </label>
+            <div style="display: flex; align-items: center; margin: 10px 0; gap: 10px"">
+                <label class="label" style="flex: 1">
+                    <span>통신사</span>
+                    <select class="ipt">
+                        <option value="SKT">SKT</option>
+                        <option value="KT">KT</option>
+                        <option value="LG">LG U+</option>
+                    </select>
+                </label>
+                <label class="label" style="flex: 2; margin-top: 0;">
+                    <span>휴대폰번호</span>
+                    <input type="number" class="ipt" placeholder="01012341234">
+                </label>
+            </div>
+            <label class="label">
+                <span>인증번호</span>
+                <input type="text" class="ipt" placeholder="인증번호">
+            </label>
+        </div>
+    </section>
+    <footer>
+        <div>
+            <ul>
+                <li style="opacity: 1"><input type="checkbox" id="checkbox1"><label for="checkbox1"></label><a href="">모든 약관에 동의합니다.</a></li>
+                <li style="opacity: 1"><input type="checkbox" id="checkbox2"><label for="checkbox2"></label><a href=""><strong>[필수]</strong> 서비스 이용약관</a></li>
+                <li style="opacity: 1"><input type="checkbox" id="checkbox3"><label for="checkbox3"></label><a href=""><strong>[필수]</strong> 위치기반 서비스 이용약관</a></li>
+                <li style="opacity: 1"><input type="checkbox" id="checkbox4"><label for="checkbox4"></label><a href=""><strong>[필수]</strong> 개인정보 처리방침</a></li>
+            </ul>
+        </div>
+        <a class="btn full default">회원가입</a>
+        <a href="./Login.html" class="btn full green" style="display: none">회원가입</a>
+    </footer>
+    <script>
+        $("input").focusout(function(){
+            $(this).parents().addClass("succes")
+        })
+
+        $("footer .default").click(function(){
+            $("footer > div").show();
+        })
+
+        $("footer input").click(function(){
+            $("footer input").attr("checked", "checked")
+            $("footer .default").hide();
+            $("footer .green").show();
+        })
+    </script>
+    <style>
+        footer> div{display: none;}
+    </style>
+</body>
+</html>

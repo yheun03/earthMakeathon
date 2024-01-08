@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="./resources/images/icons/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="./resources/styles/common.css">
+    <link rel="stylesheet" href="./resources/styles/layout.css">
+    <link rel="stylesheet" href="./resources/styles/style.css">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b9cdef4e50d74b41b2be19a98ae19255"></script>
+    <script type="text/javascript" src="./resources/scripts/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./resources/scripts/scripts.js"></script>
+</head>
+<body>
+    <div id="modal" style="background-color: white;">
+        <div class="selfcheck" data-modalid="check">
+            <img src="/resources/images/1.png">
+            <span><span>제품과 연결중</span><span>...</span>
+        </div>
+    </div>
+    <header>
+        <div>
+            <a href="./myPage.html" class="img40x40 ic-back"></a>
+            <p class="title">자가진단</p>
+            <a href="" class="img40x40"></a>
+        </div>
+    </header>
+    <section>
+        <ul class="drop">
+            <li class="open"><a data-modal="check">측정 시작</a></li>
+        </ul>
+    </section>
+    <footer>
+        <ul>
+            <li>
+                <a href="./alert.html">
+                    <img src="/resources/images/icons/img40x40/footer/ic-info.svg" alt="" class="img40x40">
+                    <span>알림</span>
+                </a>
+            </li>
+            <li>
+                <a href="./map.html">
+                    <img src="/resources/images/icons/img40x40/footer/ic-map.svg" alt="" class="img40x40">
+                    <span>지도</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="./myPage.html">
+                    <img src="/resources/images/icons/img40x40/footer/ic-myPage.svg" alt="" class="img40x40">
+                    <span>마이페이지</span>
+                </a>
+            </li>
+        </ul>
+    </footer>
+    <script>
+        $(document).ready(function(){
+            setTimeout(function(){
+                $(".selfcheck img").attr("src", "/resources/images/2.png")
+                $(".selfcheck span span:first-child").text("측정중")
+            },4000)
+            setTimeout(function(){
+                $(".selfcheck img").attr("src", "/resources/images/3.png")
+                $(".selfcheck span span:first-child").text("데이터 분석중")
+            },10000)
+            setTimeout(function(){
+                location.href = './selfcheckresult.html';
+            },12000)
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="./resources/images/icons/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="./resources/styles/common.css">
+    <link rel="stylesheet" href="./resources/styles/layout.css">
+    <link rel="stylesheet" href="./resources/styles/style.css">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b9cdef4e50d74b41b2be19a98ae19255"></script>
+    <script type="text/javascript" src="./resources/scripts/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./resources/scripts/scripts.js"></script>
+</head>
+<body>
+    <div id="modal">
+        <div class="modal-wrap choose" data-modalid="selfcheck">
+            <div class="modal-body">
+                <h2>무엇을 진단 하시겠습니까?</h2>
+            </div>
+            <div class="modal-footer">
+                <a href="./selfcheck.html">자신의 몸</a>
+                <a href="./selfcheck.html">코로나 블루</a>
+            </div>
+        </div>
+        <div class="modal-wrap choose" data-modalid="checklist">
+            <div class="modal-body">
+                <h2>무엇 fltmxm</h2>
+            </div>
+            <div class="modal-footer">
+                <a href="./checklist.html">자신의 몸</a>
+                <a href="./checklist.html">코로나 블루</a>
+            </div>
+        </div>
+    </div>
+    <header>
+        <div>
+            <a href="" class="img40x40"></a>
+            <p class="title">마이페이지</p>
+            <a href="" class="img40x40"></a>
+        </div>
+    </header>
+    <section>
+        <div id="profile-area">
+            <div class="profile" style="background-image: url(http://image.kmib.co.kr/online_image/2020/0122/202001220402_11170924119205_1.jpg);">
+                <span>AB<sup>+</sup></span>
+            </div>
+            <div>
+                <span class="title male">은영환</span>
+
+                <ul>
+                    <li>2003. 02. 08. 만 19세</li>
+                    <li>198cm / 70kg</li>
+                    <li><strong>본인</strong><a> : 010-1111-1111</a></li>
+                    <li><strong>보호자</strong><a> : 010-1111-1111</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="selfcheck-area">
+            <a data-modal="selfcheck">
+                <span>자가진단</span>
+                <div></div>
+            </a>
+            <a data-modal="checklist">
+                <span>자가진단 이력</span>
+                <div></div>
+            </a>
+        </div>
+        <ul class="drop">
+            <li class="open"><span>복용중인 약 리스트</span>
+                <ul>
+                    <li class="title">1. 설폰 요소제</li>
+                    <li class="dscpt">췌정에서 인슐린 분비를 촉진하는 약</li>
+                    <li class="title">2. 메글리티아나드계</li>
+                    <li class="dscpt">췌장에서 신속하게 인슐린 분비를 촉진하는 약</li>
+                    <li class="title">3. 비구아나이드계</li>
+                    <li class="dscpt">간에서 포도당 생성을 억제하고, 인슐린 저항성을 개선하는 약</li>
+                    <li class="title">4. 알파 글루코시다제 저해제</li>
+                    <li class="dscpt">소장에서 탄수화물 흡수를 방해하여 식후 고혈당 조절하는 약</li>
+                    <li class="title">5. 치아졸리딘디온계</li>
+                    <li class="dscpt">말초 근육, 간,  지방에서 인슐린 감수성을 증가시키는 약</li>
+                </ul>
+            </li>
+            <li><span>앓고있는 질환</span>
+                <ul>
+                    <li>1. 당뇨병</li>
+                </ul>
+            </li>
+            <li><span>알레르기 및 약물 부작용</span>
+                <ul>
+                    <li>1. 테스트</li>
+                </ul>
+            </li>
+            <li class="open"><span class="checkbox">취침시간</span>
+                <ul>
+                    <li>
+                        <input type="time">
+                        ~
+                        <input type="time">
+                    </li>
+                </ul>
+            </li>
+            <li class="open"><span class="checkbox">약 복용시간</span>
+                <ul>
+                    <li>
+                        <input type="time">
+                        <input type="text" placeholder="복용할 약과 개수를 적어주세요.">
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="drop">
+            <li><a>보호자 연결</a></li>
+            <li><a>공지사항</a></li>
+            <li><a>앱 설정</a></li>
+            <li><a>고객센터 & FAQ</a></li>
+        </ul>
+    </section>
+    <footer>
+        <ul>
+            <li>
+                <a href="./alert.html">
+                    <img src="/resources/images/icons/img40x40/footer/ic-info.svg" alt="" class="img40x40">
+                    <span>알림</span>
+                </a>
+            </li>
+            <li>
+                <a href="./map.html">
+                    <img src="/resources/images/icons/img40x40/footer/ic-map.svg" alt="" class="img40x40">
+                    <span>지도</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="./myPage.html">
+                    <img src="/resources/images/icons/img40x40/footer/ic-myPage.svg" alt="" class="img40x40">
+                    <span>마이페이지</span>
+                </a>
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>
